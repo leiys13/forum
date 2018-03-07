@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Standard Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Site Properties -->
+<title>DEMO</title>
+<link rel="stylesheet" href="${ctxPath}/css/bootstrap.min.css">
+<script src="${ctxPath}/js/jquery-2.1.4.min.js"></script>
+<script src="${ctxPath}/js/bootstrap.min.js"></script>
+
+<script>
+
+$(function() {
+	$("#list-article").click(function() {
+		window.location.href="/article/listArticle";
+	});
+	
+	$("#add-article").click(function() {
+		window.location.href="/article/addview";
+	});
+	
+});
+
+</script>
+</head>
+<body >
+
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" id="list-article">文章列表</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" id="add-article">添加文章</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default">。。。</button>
+  </div>
+</div>
+
+</body>
+</html>

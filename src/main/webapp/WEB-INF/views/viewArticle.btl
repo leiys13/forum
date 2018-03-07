@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Standard Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Site Properties -->
+<title>DEMO</title>
+<link rel="stylesheet" href="${ctxPath}/css/bootstrap.min.css">
+<script src="${ctxPath}/js/jquery-2.1.4.min.js"></script>
+<script src="${ctxPath}/js/bootstrap.min.js"></script>
+
+<script>
+$(function() {
+	$("#btn-return").click(function() {
+		window.location.href="/article/listArticle";
+	});
+	$("#btn-commit").click(function() {
+		var content = $("#comments").val();
+		if(content == "") {
+			alert("content or content is null");
+			return;
+		}
+		$.ajax({
+		    url:'/comment/add',
+		    type:'POST', //GET
+		    async:true,    //或false,是否异步
+		    data:{
+		        text:content
+		    },
+		    timeout:5000,    //超时时间
+		    dataType:'text',    //返回的数据格式：json/xml/html/script/jsonp/text
+		    success:function(data,textStatus,jqXHR){
+		        window.location.href="/article/getArticle?id="+$("#articleId").val();
+		    },
+		    error:function(data,xhr,textStatus){
+		    }
+	    });
+	});
+	
+});
+</script>
+</head>
+<body style="margin-top:20px;">
+
+<div class="panel panel-default"  style="width:80%;margin:auto;">
+  <!-- Default panel contents -->
+  <div class="panel-heading" style="text-align:center;margin:auto;">${article.title}</div>
+  <div class="panel-body">
+  	<div><img src="${article.imageUrl}" style="width:35px;height:35px;"/></div><br/>
+    <p>${article.content}</p>
+  </div>
+</div>
+
+
+
+<div class="panel panel-default"  style="width:80%;margin:auto;">
+<table class="table">
+<%
+var i=0;
+for(comment in comments) {
+%>
+	<tr>
+		<td>${++i}楼：${comment.content}</td>
+	</tr>
+<%}%>
+
+</table>
+评论：
+<textarea rows="8" cols="80%" id="comments"></textarea><br/>
+<input id="articleId" type="hidden" value="${articleId}">
+<button type="button" class="btn btn-default btn-lg active" id="btn-commit">提交</button>
+</div>
+<div style="margin:auto;text-align: center;">
+<button type="button" class="btn btn-default btn-lg active" id="btn-return">返回</button>
+</div>
+</body>
+</html>
