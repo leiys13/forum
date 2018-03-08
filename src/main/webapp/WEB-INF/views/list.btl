@@ -81,6 +81,7 @@ for(item in list) {
 %>
 </table>
 <div style="margin:auto;text-align: center;">
+<button type="button" class="btn btn-default btn-lg active" id="add-article">发帖</button>
 <button type="button" class="btn btn-default btn-lg active" id="btn-return">返回</button>
 </div>
 
