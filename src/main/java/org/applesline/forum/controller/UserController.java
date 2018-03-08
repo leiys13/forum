@@ -36,21 +36,6 @@ public class UserController {
 		return view;
 	}
 	
-	@RequestMapping("/add") 
-	@ResponseBody
-	public Response createUser(String username,String password,String email) {
-		boolean exist = userService.exist(username);
-		if(exist) {
-			return Response.FAILURE.data("already exist username " + username);
-		}
-		User user = new User();
-		user.setUserName(username);
-		user.setPassword(Util.MD5(password));
-		user.setEmail(email);
-		userService.addUser(user);
-		return Response.SUCCESS.data("{success:'haha'}");
-	}
-	
 	@RequestMapping("/check") 
 	@ResponseBody
 	public Response checkUser(String loginName,String loginPwd,HttpServletRequest request) {
@@ -66,6 +51,26 @@ public class UserController {
 		}
 		return Response.SUCCESS.data(result);
 	}
+
+	@RequestMapping("/register") 
+	public ModelAndView register() {
+		ModelAndView view = new ModelAndView("/register.btl");
+		return view;
+	}
 	
+	@RequestMapping("/registerCheck") 
+	@ResponseBody
+	public Response createUser(String username,String password,String email) {
+		boolean exist = userService.exist(username);
+		if(exist) {
+			return Response.FAILURE.data("already exist username " + username);
+		}
+		User user = new User();
+		user.setUserName(username);
+		user.setPassword(Util.MD5(password));
+		user.setEmail(email);
+		userService.addUser(user);
+		return Response.SUCCESS.data("{success:'haha'}");
+	}
 	
 }

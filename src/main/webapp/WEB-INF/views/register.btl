@@ -15,7 +15,7 @@
 <script src="${ctxPath}/js/bootstrap.min.js"></script>
 <script>
 $(function() {
-	$("#btn-login").click(function() {
+	$("#btn-register").click(function() {
 		var username = $("#inputEmail").val();
 		var password = $("#inputPassword").val();
 		if(isEmpty(username) || isEmpty(password)) {
@@ -23,7 +23,7 @@ $(function() {
 			return;
 		}
 		$.ajax({
-		    url:'/user/check',
+		    url:'/user/registerCheck',
 		    type:'POST', //GET
 		    async:true,    //或false,是否异步
 		    data:{
@@ -34,7 +34,11 @@ $(function() {
 		    success:function(data,textStatus,jqXHR){
 		        console.log(data)
 		        if(data.data.status === "1") {
-		        	window.location.href="/article/home";
+		        	if(confirm("注册成功，是否前往登录？")==true) {
+		        		window.location.href="/user/login";
+		        	} else {
+			        	window.location.href="/article/home";
+					}		        	
 		        } else {
 		        	alert("用户名或密码错误");
 		        }
@@ -42,10 +46,6 @@ $(function() {
 		    error:function(data,xhr,textStatus){
 		    }
 	    });
-	});
-	
-	$("#btn-to-register").click(function(){
-		window.location.href="/user/register";
 	});
 });
 
@@ -60,7 +60,7 @@ function isEmpty(val) {
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <form class="form-horizontal">
-                <span class="heading">用户登录</span>
+                <span class="heading">用户注册</span>
                 <div class="form-group">
                     <input type="text" class="form-control" id="inputEmail" placeholder="用户名或电子邮件">
                     <i class="fa fa-user"></i>
@@ -76,9 +76,8 @@ function isEmpty(val) {
                         <label for="checkbox1"></label>
                     </div>
                     <span class="text">Remember me</span>
-                    <button class="btn btn-default" id="btn-login">登录</button>
+                    <button class="btn btn-default" id="btn-register">注册</button>
                 </div>
-                <button class="btn btn-default" id="btn-to-register">还没帐号，前往注册</button>
             </form>
         </div>
     </div>
