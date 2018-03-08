@@ -7,7 +7,7 @@
     <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.9.RELEASE</version>
+    <version>2.0.0.RELEASE</version>
   </parent>
   <dependencies>
 	<dependency>
@@ -20,6 +20,12 @@
         </exclusion>
 	   </exclusions>
 	</dependency>
+    <!-- 开发时使用，支持热部署 -->
+    <dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-devtools</artifactId>
+    	<optional>true</optional>
+    </dependency>
 	<dependency>
 	   <groupId>com.ibeetl</groupId>
 	   <artifactId>beetl-framework-starter</artifactId>
