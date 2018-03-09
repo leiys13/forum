@@ -37,7 +37,7 @@ public class UserService {
 
 
 	public void addUser(User user) {
-		userDao.addUser(user);
+		userDao.insert(user);
 	}
 
 	public List<User> listUser() {

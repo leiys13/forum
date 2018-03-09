@@ -78,8 +78,8 @@ function isEmpty(val) {
                     <span class="text">Remember me</span>
                     <button class="btn btn-default" id="btn-login">登录</button>
                 </div>
-                <button class="btn btn-default" id="btn-to-register">还没帐号，前往注册</button>
             </form>
+            <button class="btn btn-default" id="btn-to-register">还没帐号，前往注册</button>
         </div>
     </div>
 </div>
