@@ -49,7 +49,7 @@ public class UserController {
 		} else {
 			result.put("status","0");
 		}
-		return Response.SUCCESS.data(result);
+		return Response.SUCCESS;
 	}
 
 	@RequestMapping("/register") 
@@ -70,7 +70,7 @@ public class UserController {
 		user.setPassword(Util.MD5(password));
 		user.setEmail(email);
 		userService.addUser(user);
-		return Response.SUCCESS.data("{success:'haha'}");
+		return Response.SUCCESS;
 	}
 	
 }

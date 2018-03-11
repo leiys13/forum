@@ -4,8 +4,8 @@ select * from t_user where id=#{id}
 
 addUser
 ===
-insert into t_user (user_name,password,real_name,email,qq,mobile,nick_name,gender,birthday) 
-values(#{userName},#{password},#{realName},#{email},#{qq},#{mobile},#{nickName},#{gender},#{birthday})
+insert into t_user (user_name,nick_name,email,mobile,password,gender,birthday,group_id) 
+values(#{userName},#{nickName},#{email},#{mobile},#{password},#{gender},#{birthday},#{groupId})
 
 listUser
 ===

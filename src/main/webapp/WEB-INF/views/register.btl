@@ -27,13 +27,13 @@ $(function() {
 		    type:'POST', //GET
 		    async:true,    //或false,是否异步
 		    data:{
-		        loginName:username,loginPwd:password
+		        username:username,password:password
 		    },
 		    timeout:5000,    //超时时间
 		    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
 		    success:function(data,textStatus,jqXHR){
 		        console.log(data)
-		        if(data.data.status === "1") {
+		        if(data.code == 1000) {
 		        	if(confirm("注册成功，是否前往登录？")==true) {
 		        		window.location.href="/user/login";
 		        	} else {
@@ -44,8 +44,13 @@ $(function() {
 		        }
 		    },
 		    error:function(data,xhr,textStatus){
+		    	alert(1)
 		    }
 	    });
+	});
+	
+	$("#btn-to-login").click(function(){
+		window.location.href="/user/login";
 	});
 });
 
@@ -76,9 +81,11 @@ function isEmpty(val) {
                         <label for="checkbox1"></label>
                     </div>
                     <span class="text">Remember me</span>
-                    <button class="btn btn-default" id="btn-register">注册</button>
+                   
                 </div>
             </form>
+             <button class="btn btn-default" id="btn-register">注册</button>
+            <button class="btn btn-default" id="btn-to-login">已有帐号，前往登录</button>
         </div>
     </div>
 </div>

@@ -17,7 +17,7 @@ public class Response implements Serializable {
 	private static final long serialVersionUID = -1213217915842455544L;
 	
 	public static final Response SUCCESS = new Response(1000,"成功");
-	public static final Response FAILURE = new Response(1001,"失败");
+	public static final Response FAILURE = new Response(1100,"失败");
 	
 	private int code;
 	private String message;

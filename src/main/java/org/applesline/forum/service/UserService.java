@@ -23,7 +23,7 @@ public class UserService {
 
 	@Autowired
 	SQLManager sqlManager;
-	
+
 	UserDao userDao;
 	
 	@PostConstruct
@@ -35,9 +35,8 @@ public class UserService {
 		return userDao.getUser(id);
 	}
 
-
 	public void addUser(User user) {
-		userDao.insert(user);
+		userDao.addUser(user);
 	}
 
 	public List<User> listUser() {
