@@ -16,7 +16,7 @@ import org.beetl.sql.core.annotatoin.Table;
 public class Comments {
 
 	private Integer id;
-	private Integer articleId;
+	private long articleId;
 	private Integer userId;
 	private String content;
 	private Date createTime;
@@ -26,10 +26,10 @@ public class Comments {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getArticleId() {
+	public long getArticleId() {
 		return articleId;
 	}
-	public void setArticleId(Integer articleId) {
+	public void setArticleId(long articleId) {
 		this.articleId = articleId;
 	}
 	public Integer getUserId() {

@@ -4,4 +4,4 @@ insert into t_comments(article_id,user_id,content,create_time) values(#{articleI
 
 list
 ===
-select * from t_comments
+select * from t_comments where article_id = #{articleId}

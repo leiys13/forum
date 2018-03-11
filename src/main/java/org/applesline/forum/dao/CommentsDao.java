@@ -6,6 +6,7 @@ package org.applesline.forum.dao;
 import java.util.List;
 
 import org.applesline.forum.model.Comments;
+import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.mapper.BaseMapper;
 
 /**
@@ -17,5 +18,5 @@ public interface CommentsDao extends BaseMapper<Comments> {
 
 	void adComment(Comments comments);
 	
-	List<Comments> list();
+	List<Comments> list(@Param("articleId")long articleId);
 }

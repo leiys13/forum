@@ -19,6 +19,7 @@ $(function() {
 		window.location.href="/article/listArticle";
 	});
 	$("#btn-commit").click(function() {
+		var articleId = $("#articleId").val();
 		var content = $("#comments").val();
 		if(content == "") {
 			alert("content or content is null");
@@ -29,12 +30,17 @@ $(function() {
 		    type:'POST', //GET
 		    async:true,    //或false,是否异步
 		    data:{
-		        text:content
+		        articleId:articleId, text:content
 		    },
 		    timeout:5000,    //超时时间
-		    dataType:'text',    //返回的数据格式：json/xml/html/script/jsonp/text
+		    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
 		    success:function(data,textStatus,jqXHR){
-		        window.location.href="/article/getArticle?id="+$("#articleId").val();
+		    	if(1000 == data.code) {
+		    		alert('response success');
+		        	window.location.href="/article/getArticle?id="+$("#articleId").val();
+		        } else {
+		        	alert("评论出错了");
+		        }
 		    },
 		    error:function(data,xhr,textStatus){
 		    }

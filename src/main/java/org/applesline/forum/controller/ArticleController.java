@@ -76,7 +76,7 @@ public class ArticleController {
 	public ModelAndView getArticle(Long id) {
 		ModelAndView view = new ModelAndView("/viewArticle.btl");
 		view.addObject("article",  articleService.getArticle(id));
-		view.addObject("comments", commentService.list());
+		view.addObject("comments", commentService.list(id));
 		view.addObject("articleId",id);
 		return view;
 	}

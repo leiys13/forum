@@ -35,8 +35,8 @@ public class CommentService {
 		commentsDao.adComment(comments);
 	}
 	
-	public List<Comments> list() {
-		return commentsDao.list();
+	public List<Comments> list(long articleId) {
+		return commentsDao.list(articleId);
 	}
 	
 }

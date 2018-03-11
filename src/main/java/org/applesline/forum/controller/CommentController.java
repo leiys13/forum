@@ -27,14 +27,14 @@ public class CommentController {
 
 	@RequestMapping("/add")
 	@ResponseBody
-	public Response add(String text,Integer articleId) {
+	public Response add(String text,long articleId) {
 		Comments comments = new Comments();
 		comments.setArticleId(articleId);
 		comments.setContent(text);
 		comments.setCreateTime(new Date());
 		comments.setUserId(1);
 		commentService.addComment(comments);
-		return Response.SUCCESS.data("{success:'haha'}");
+		return Response.SUCCESS;
 	}
 	
 }
