@@ -24,7 +24,8 @@
             </bean>
         </property>
         <property name="nc">
-            <bean class="org.applesline.forum.common.ColumnNameConversion"></bean>
+           <!--  <bean class="org.applesline.forum.common.ColumnNameConversion"></bean> -->
+            <bean class="org.beetl.sql.core.UnderlinedNameConversion"></bean>
         </property>
         <property name="interceptors">
             <list>

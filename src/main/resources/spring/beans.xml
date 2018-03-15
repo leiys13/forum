@@ -18,10 +18,7 @@
 		
 		<mvc:interceptors>
 			<bean class="org.applesline.forum.interceptor.AuthInterceptor"></bean>
+			<bean class="org.applesline.forum.interceptor.CrossDomainInterceptor"></bean>
 		</mvc:interceptors>
 		 
-		<mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>  
-		<mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>  
-		<mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/> 
-
 </beans>

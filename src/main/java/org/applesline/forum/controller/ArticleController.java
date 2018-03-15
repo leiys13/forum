@@ -3,7 +3,8 @@
  */
 package org.applesline.forum.controller;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.applesline.forum.base.Response;
 import org.applesline.forum.model.Article;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author liuyaping
@@ -30,16 +30,9 @@ public class ArticleController {
 	private CommentService commentService;
 
 	@RequestMapping("/home")
-	public ModelAndView home() {
-		ModelAndView view = new ModelAndView("/home.btl");
-		view.addObject("list",  new ArrayList());
-		return view;
-	}
-	
-	@RequestMapping("/addview")
-	public ModelAndView addview() {
-		ModelAndView view = new ModelAndView("/addArticle.btl");
-		return view;
+	@ResponseBody
+	public Response home() {
+		return Response.SUCCESS.data("this is a test created by liuyaping");
 	}
 	
 	@RequestMapping("/delete") 
@@ -73,21 +66,18 @@ public class ArticleController {
 	}
 	
 	@RequestMapping("/getArticle")
-	public ModelAndView getArticle(Long id) {
-		ModelAndView view = new ModelAndView("/viewArticle.btl");
-		view.addObject("article",  articleService.getArticle(id));
-		view.addObject("comments", commentService.list(id));
-		view.addObject("articleId",id);
-		return view;
+	@ResponseBody
+	public Response getArticle(Long id) {
+		Map<String,Object> result = new HashMap<String,Object>();
+		result.put("article",  articleService.getArticle(id));
+		result.put("comments", commentService.list(id));
+		return Response.SUCCESS.data(result);
 	}
 	
 	@RequestMapping("/listArticle")
 	@ResponseBody
-	public ModelAndView listArticle() {
-		ModelAndView view = new ModelAndView("/list.btl");
-		view.addObject("list",  articleService.listArticle());
-		view.addObject("themes",new String[]{"精华","财务"});
-		return view;
+	public Response listArticle() {
+		return Response.SUCCESS.data(articleService.listArticle());
 	}
 	
 }

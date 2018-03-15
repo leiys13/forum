@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author liuyaping
@@ -29,12 +28,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping("/login") 
-	public ModelAndView login() {
-		ModelAndView view = new ModelAndView("/login.btl");
-		return view;
-	}
 	
 	@RequestMapping("/check") 
 	@ResponseBody
@@ -52,12 +45,6 @@ public class UserController {
 		return Response.SUCCESS;
 	}
 
-	@RequestMapping("/register") 
-	public ModelAndView register() {
-		ModelAndView view = new ModelAndView("/register.btl");
-		return view;
-	}
-	
 	@RequestMapping("/registerCheck") 
 	@ResponseBody
 	public Response createUser(String username,String password,String email) {

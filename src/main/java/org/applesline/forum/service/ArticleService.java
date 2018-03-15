@@ -46,7 +46,6 @@ public class ArticleService {
 	}
 	
 	public List<Article> listArticle() {
-		System.out.println(articleDao.listArticle());
 		return articleDao.listArticle();
 	}
 	

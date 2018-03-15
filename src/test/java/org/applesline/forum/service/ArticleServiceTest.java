@@ -19,7 +19,7 @@ public class ArticleServiceTest extends TestSuper {
 	@Autowired
 	private ArticleService articleService;
 	
-	@Test
+//	@Test
 	public void testListArticle() {
 		System.out.println(articleService.listArticle());
 	}

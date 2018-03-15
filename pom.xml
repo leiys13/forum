@@ -20,22 +20,11 @@
         </exclusion>
 	   </exclusions>
 	</dependency>
-    <!-- 开发时使用，支持热部署 -->
-    <dependency>
-    	<groupId>org.springframework.boot</groupId>
-    	<artifactId>spring-boot-devtools</artifactId>
-    	<optional>true</optional>
-    </dependency>
 	<dependency>
 	   <groupId>com.ibeetl</groupId>
 	   <artifactId>beetl-framework-starter</artifactId>
 	   <version>1.1.15.RELEASE</version>
 	</dependency>
-	<dependency>
-            <groupId>com.ibeetl</groupId>
-            <artifactId>beetlsql</artifactId>
-            <version>2.6.5</version>
-        </dependency>
     <dependency>
 	    <groupId>com.alibaba</groupId>
 	    <artifactId>druid</artifactId>
@@ -67,7 +56,6 @@
 	<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
       <scope>test</scope>
     </dependency>
    </dependencies>

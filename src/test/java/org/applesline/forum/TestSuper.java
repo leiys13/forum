@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * 创建时间：2018年3月8日
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = ForumApplication.class,webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = ForumApplication.class,webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TestSuper {
 
 }
