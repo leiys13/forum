@@ -24,5 +24,5 @@ public interface UserDao extends BaseMapper<User> {
 	
 	int findByName(@Param("username")String username);
 	
-	int checkLogin(@Param("username")String username,@Param("password")String password);
+	User checkLogin(@Param("username")String username,@Param("password")String password);
 }
