@@ -1,55 +1,38 @@
-/**
- * 
- */
 package org.applesline.forum.service;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-import org.applesline.forum.dao.ArticleDao;
 import org.applesline.forum.model.Article;
-import org.applesline.forum.util.IdGenerator;
-import org.beetl.sql.core.SQLManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.applesline.forum.vo.ArticleInfo;
+import org.applesline.forum.vo.ArticleList;
+import org.beetl.sql.core.engine.PageQuery;
 
 /**
- * @author liuyaping
- *
- * 创建时间：2018年3月2日
+ * @date 2018年3月22日
+ * @author lei.ys
+ * @addr company
+ * @desc
  */
-@Service
-public class ArticleService {
+public interface ArticleService {
+	
+	public Article getArticle(long id);
+	
+	public void delete(long id);
+	
+	public void addArticle(Article article);
+	
+	public List<Article> listArticle();
+	
+	public Article findById(long id);
+	
+	public PageQuery<ArticleList> findListByCondition(PageQuery<ArticleList> query);
+	
+	public ArticleInfo findInfoById(long id);
+	
+	public ArticleInfo getInfoById(long id);
+	
+	public void incrementViewNum(long id);
+	
+	public boolean exist(String title);
 
-	@Autowired
-	SQLManager sqlManager;
-	
-	ArticleDao articleDao;
-	
-	@PostConstruct
-	public void init() {
-		articleDao = sqlManager.getMapper(ArticleDao.class);
-	}
-	
-	public Article getArticle(long id) {
-		return articleDao.getArticle(id);
-	}
-	
-	public void delete(long id) {
-		articleDao.delete(id);
-	}
-	
-	public void addArticle(Article article) {
-		article.setId(IdGenerator.generateId());
-		articleDao.addArticle(article);
-	}
-	
-	public List<Article> listArticle() {
-		return articleDao.listArticle();
-	}
-	
-	public boolean exist(String title) {
-		return articleDao.findByTitle(title) > 0;
-	}
 }

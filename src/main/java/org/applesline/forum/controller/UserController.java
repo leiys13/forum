@@ -12,8 +12,11 @@ import org.applesline.forum.common.Consts;
 import org.applesline.forum.model.User;
 import org.applesline.forum.service.UserService;
 import org.applesline.forum.util.RegexUtil;
+import org.applesline.forum.util.StringUtil;
 import org.applesline.forum.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,16 +41,23 @@ public class UserController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/check") 
+	@GetMapping("/check") 
 	public Response checkUser(String loginName,String loginPwd,HttpServletRequest request) {
-		if(null==loginName || null==loginPwd) {
-			return Response.instance(Status.REQUEST_PARAM_ERROR, "用户名或密码不正确");
+		if(StringUtil.isEmpty(loginName) || StringUtil.isEmpty(loginPwd)) {
+			return Response.instance(Status.REQUEST_PARAM_ERROR, "非法请求");
 		}
-		User loginUser = userService.checkLogin(loginName, Util.MD5(loginPwd));
+		
+		User loginUser = null;
+		try {
+			loginUser = userService.checkLogin(loginName, Util.MD5(loginPwd));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.instance(Status.SYSTEM_ERROR);
+		}
 		if(null!=loginUser) {
 			super.getRequest().getSession().setAttribute(Consts.LOGIN_USER, loginUser);
 		} else {
-			return Response.instance(Status.REQUEST_NOT_EXIST_ERROR, "查询不到用户");
+			return Response.instance(Status.REQUEST_NOT_EXIST_ERROR, "用户名或密码不正确");
 		}
 		return Response.instance("登录成功", loginUser);
 	}
@@ -58,7 +68,7 @@ public class UserController extends BaseController {
 	 * @param password	密码
 	 * @return
 	 */
-	@RequestMapping("/register") 
+	@PostMapping("/register") 
 	public Response createUser(String userName,String password) {
 		if(null==userName || null==password || !RegexUtil.match(Consts.Regex.USER_NAME, userName) 
 				|| !RegexUtil.match(Consts.Regex.PASSWORD, password)) {
@@ -75,7 +85,7 @@ public class UserController extends BaseController {
 			userService.addUser(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return Response.instance(Status.SYSTEM_ERROR, "新增用户出错");
+			return Response.instance(Status.SYSTEM_ERROR);
 		}
 		return Response.instance("注册成功");
 	}
@@ -84,7 +94,7 @@ public class UserController extends BaseController {
 	 * 用户注销
 	 * @return
 	 */
-	@RequestMapping("/checkout")
+	@GetMapping("/checkout")
 	public Response logout() {
 		super.getRequest().getSession().removeAttribute(Consts.LOGIN_USER);
 		return Response.instance("注销成功");

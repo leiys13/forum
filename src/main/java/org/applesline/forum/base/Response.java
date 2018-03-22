@@ -89,8 +89,10 @@ public class Response implements Serializable {
 	private static final int REQUEST_VALID_ERROR_CODE = 620;
 	// 无权限
 	private static final int REQUEST_AUTH_ERROR_CODE = 630;
-	// 请求不存在的
+	// 请求不存在的数据
 	private static final int REQUEST_NOT_EXIST_ERROR_CODE = 640;
+	// 未登录
+	private static final int REQUEST_NO_LOGIN_ERROR_CODE = 680;
 	// 系统错误（通用）
 	private static final int SYSTEM_ERROR_CODE = 800;
 	// 系统处理时间过长
@@ -112,6 +114,8 @@ public class Response implements Serializable {
 			this.code = REQUEST_AUTH_ERROR_CODE; break;
 		case REQUEST_NOT_EXIST_ERROR:
 			this.code = REQUEST_NOT_EXIST_ERROR_CODE; break;
+		case REQUEST_NO_LOGIN_ERROR:
+			this.code = REQUEST_NO_LOGIN_ERROR_CODE; break;
 		case SYSTEM_ERROR:
 			this.code = SYSTEM_ERROR_CODE; break;
 		case SYSTEM_SLOW_ERROR:

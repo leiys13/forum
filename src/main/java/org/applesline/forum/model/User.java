@@ -21,31 +21,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User extends BaseBean {
 
 	private static final long serialVersionUID = 8579878213510739287L;
-	// ID
-	private long id;
-	// 用户名
-	private String userName;
-	// 昵称
-	private String nickName;
-	// 邮箱
-	private String email;
-	// 手机号
-	private long mobile = -1;
-	// 密码
+	
+	private long id;	// ID
+	private String userName;	// 用户名
+	private String nickName;	// 昵称
+	private String email;		// 邮箱
+	private long mobile = -1;	// 手机号
 	@JsonIgnore
-	private String password;
-	// 性别（-1：未知；1：男；0：女）
-	private int gender = -1;
-	// 生日
+	private String password;	// 密码
+	private int gender = -1;	// 性别（-1：未知；1：男；0：女）
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
-	private Date birthday;
-	// 头像url地址
-	private String profilePic;
-	// 注册时间
+	private Date birthday;		// 生日
+	private String profilePic;	// 头像url地址
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-	private Date createTime;
-	// 所属用户组ID
-	private int groupId = -1;
+	private Date createTime;	// 注册时间
+	private int groupId = -1;	// 所属用户组ID
 	
 	/*
 	 * getter & setter

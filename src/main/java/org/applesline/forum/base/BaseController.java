@@ -21,5 +21,5 @@ public class BaseController implements Serializable {
 		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes(); 
 		return attrs.getRequest();
 	}
-
+	
 }

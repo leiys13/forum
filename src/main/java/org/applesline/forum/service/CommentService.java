@@ -1,42 +1,25 @@
-/**
- * 
- */
 package org.applesline.forum.service;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-import org.applesline.forum.dao.CommentsDao;
 import org.applesline.forum.model.Comments;
-import org.beetl.sql.core.SQLManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.applesline.forum.vo.CommentsList;
+import org.beetl.sql.core.engine.PageQuery;
 
 /**
- * @author liuyaping
- *
- * 创建时间：2018年2月9日
+ * @date 2018年3月22日
+ * @author lei.ys
+ * @addr company
+ * @desc
  */
-@Service
-public class CommentService {
+public interface CommentService {
+	
+	public void addComment(Comments comments);
+	
+	public List<Comments> list(long articleId);
+	
+	public Comments add(Comments comments);
+	
+	public PageQuery<CommentsList> findListByCondition(PageQuery<CommentsList> query);
 
-	@Autowired
-	SQLManager sqlManager;
-	
-	CommentsDao commentsDao;
-	
-	@PostConstruct
-	public void init() {
-		commentsDao = sqlManager.getMapper(CommentsDao.class);
-	}
-	
-	public void addComment(Comments comments) {
-		commentsDao.adComment(comments);
-	}
-	
-	public List<Comments> list(long articleId) {
-		return commentsDao.list(articleId);
-	}
-	
 }
