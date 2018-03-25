@@ -15,8 +15,6 @@ import org.applesline.forum.util.RegexUtil;
 import org.applesline.forum.util.StringUtil;
 import org.applesline.forum.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +39,7 @@ public class UserController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@GetMapping("/check") 
+	@RequestMapping("/check") 
 	public Response checkUser(String loginName,String loginPwd,HttpServletRequest request) {
 		if(StringUtil.isEmpty(loginName) || StringUtil.isEmpty(loginPwd)) {
 			return Response.instance(Status.REQUEST_PARAM_ERROR, "非法请求");
@@ -68,7 +66,7 @@ public class UserController extends BaseController {
 	 * @param password	密码
 	 * @return
 	 */
-	@PostMapping("/register") 
+	@RequestMapping("/register") 
 	public Response createUser(String userName,String password) {
 		if(null==userName || null==password || !RegexUtil.match(Consts.Regex.USER_NAME, userName) 
 				|| !RegexUtil.match(Consts.Regex.PASSWORD, password)) {
@@ -94,7 +92,7 @@ public class UserController extends BaseController {
 	 * 用户注销
 	 * @return
 	 */
-	@GetMapping("/checkout")
+	@RequestMapping("/checkout")
 	public Response logout() {
 		super.getRequest().getSession().removeAttribute(Consts.LOGIN_USER);
 		return Response.instance("注销成功");

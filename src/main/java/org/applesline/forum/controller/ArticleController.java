@@ -42,20 +42,17 @@ public class ArticleController extends BaseController {
 	private CommentService commentService;
 
 	@RequestMapping("/home")
-	@ResponseBody
 	public Response home() {
 		return Response.SUCCESS.data("this is a test created by liuyaping");
 	}
 	
 	@RequestMapping("/delete") 
-	@ResponseBody
 	public Response delete(long id) {
 		articleService.delete(id);
 		return Response.SUCCESS.data("delete success！");
 	}
 	
 	@RequestMapping("/test") 
-	@ResponseBody
 	public Response test() {
 		return Response.FAILURE.data("this is a test for failure");
 	}
@@ -88,7 +85,7 @@ public class ArticleController extends BaseController {
 		return Response.SUCCESS.data(result);
 	}
 	
-	@GetMapping("/{id}")
+	@RequestMapping("/{id}")
 	public Response getArticle(@PathVariable("id") long id) {
 		if(0L==id) {
 			return Response.instance(Status.REQUEST_PARAM_ERROR, "非法请求");
