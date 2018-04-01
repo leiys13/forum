@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>用户登录</title>
+<title>用户注册</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
@@ -96,14 +96,14 @@ body {
 				return;
 			}
 			$.ajax({
-				url: "/user/check",
+				url: "/user/register",
 				type: "POST",
-				data: {loginName: $("#inputUserName").val(), loginPwd: $("#inputPassword").val()},
+				data: {userName: $("#inputUserName").val(), password: $("#inputPassword").val()},
 				dataType: "JSON",
 				success: function(res) {
 					if(100==res.code) {
-						if(confirm("登录成功，查看最新帖子？")) {
-							location.href="/web/articles";
+						if(confirm("注册成功，前往登录？")) {
+							location.href="/user/toLogin";
 						}
 					} else {
 						alert(res.message);

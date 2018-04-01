@@ -19,5 +19,11 @@ public class UserWebController {
 		ModelAndView view = new ModelAndView("login");
 		return view;
 	}
+	
+	@RequestMapping("/toRegister")
+	public ModelAndView register() throws Exception {
+		ModelAndView view = new ModelAndView("register");
+		return view;
+	}
 
 }
