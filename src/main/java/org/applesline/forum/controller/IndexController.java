@@ -13,7 +13,7 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "forward:/article/listArticle";
+		return "forward:/web/article/list";
 	}
 
 }

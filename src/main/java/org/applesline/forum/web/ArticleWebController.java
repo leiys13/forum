@@ -10,15 +10,22 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by liuyaping on 2018/3/25
  */
 @Controller
-@RequestMapping("/web")
+@RequestMapping("/web/article")
 public class ArticleWebController {
 
-    @RequestMapping("/articles")
-    public ModelAndView index() throws Exception {
-        ModelAndView view = new ModelAndView("index");
-        view.addObject("articles", HttpUtils.getToJson(UrlsEnum.Article_list.url+"/1/10"));
-        return view;
-    }
+	@RequestMapping("/list")
+	public ModelAndView list() throws Exception {
+		ModelAndView view = new ModelAndView("article/list");
+		view.addObject("articles", HttpUtils.getToJson(UrlsEnum.Article_list.url+"/1/10"));
+		return view;
+	}
+
+	@RequestMapping("/detail")
+	public ModelAndView detail(long id) throws Exception {
+		ModelAndView view = new ModelAndView("article/detail");
+		view.addObject("article", HttpUtils.getToJson(UrlsEnum.Article_detail.url+id));
+		return view;
+	}
 
     @RequestMapping("/home")
     public ModelAndView home() {

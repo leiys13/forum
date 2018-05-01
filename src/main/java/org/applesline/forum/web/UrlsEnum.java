@@ -7,9 +7,8 @@ package org.applesline.forum.web;
  */
 public enum UrlsEnum {
 
-
-
-    Article_list("文章列表","/article/list");
+    Article_list("文章列表","/article/list"),
+    Article_detail("文章详情","/article/");
 
     private static final String baseUrl = "http://localhost:8080";
     public String name;
